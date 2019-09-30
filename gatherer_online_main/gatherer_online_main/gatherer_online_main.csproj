@@ -36,6 +36,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -92,6 +93,33 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Properties\stop_signal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="stop_signal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="final_goal.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="goal.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="height.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="width.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="width1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="rofl.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
