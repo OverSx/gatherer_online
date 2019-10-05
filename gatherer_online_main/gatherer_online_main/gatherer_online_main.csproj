@@ -92,7 +92,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
@@ -106,9 +106,7 @@
   <ItemGroup>
     <Resource Include="Properties\stop_signal.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="stop_signal.png" />
   </ItemGroup>
@@ -141,6 +139,12 @@
     <Resource Include="Properties\Joy.PNG" />
     <Resource Include="Properties\Joy2.PNG" />
     <Resource Include="Properties\Wonder.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Failure.PNG" />
+    <Resource Include="Resources\Joy.PNG" />
+    <Resource Include="Resources\Joy2.PNG" />
+    <Resource Include="Resources\Wonder.PNG" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

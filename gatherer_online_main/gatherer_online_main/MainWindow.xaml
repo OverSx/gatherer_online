@@ -22,5 +22,5 @@
         <Image x:Name="image_goals" HorizontalAlignment="Left" Height="47" Margin="406,353,0,0" VerticalAlignment="Top" Width="54" Source="Properties/goal.jpg" Stretch="Fill"/>
         <Button x:Name="bt_generate" Content="Сгенерировать" Margin="15,462,0,0" Click="bt_generate_Click" Height="40" VerticalAlignment="Top" HorizontalAlignment="Left" Width="355"/>
     </Grid>
-    
+
 </Window>
