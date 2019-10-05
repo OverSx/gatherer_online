@@ -14,17 +14,17 @@ namespace gatherer_online_main
         // 3 - obstacle cell
         // 4 - agent
 
+        int[,] filled_field;
         int[,] field_size;
         int numGoals;
         int numObstacles;
 
         Random rand = new Random();
-        int[,] filled_field;
 
         private List<int> Coordinates(int field_w, int field_h)
         {
-            int x = rand.Next(field_w + 1);
-            int y = rand.Next(field_h + 1);
+            int x = rand.Next(field_w);
+            int y = rand.Next(field_h);
 
             List<int> coordinates = new List<int> {x, y};
 
@@ -33,19 +33,20 @@ namespace gatherer_online_main
 
         private int[,] Filling(int field_w, int field_h, int field_s, int field_g)
         {
-            field_size = new int[field_w, field_h];
+            filled_field = new int[field_w, field_h];
             numGoals = field_g;
             numObstacles = field_s;
 
             List<int> agent_coord = Coordinates(field_w, field_h);
 
-            for (int i = 0; i <= field_w; i++)
+            for (int i = 0; i < field_w; i++)
             {
-                for (int j = 0; j <= field_h; j++)
+                for (int j = 0; j < field_h; j++)
                 {
                     if (i == agent_coord[0] && j == agent_coord[1])
                     {
                         filled_field[i, j] = 4;
+                        continue;
                     }
 
                     filled_field[i, j] = 0;
@@ -53,24 +54,17 @@ namespace gatherer_online_main
             }
 
             List<int> final_goal_coord = Coordinates(field_w, field_h);
-            
-            if (filled_field[final_goal_coord[0], final_goal_coord[1]] == 0)
-            {
-                filled_field[final_goal_coord[0], final_goal_coord[1]] = 2;
-            }
-            else
-            {
-                while(filled_field[final_goal_coord[0], final_goal_coord[1]] != 0)
-                {
-                    final_goal_coord = Coordinates(field_w, field_h);
-                }
 
-                filled_field[final_goal_coord[0], final_goal_coord[1]] = 2;
+            while (filled_field[final_goal_coord[0], final_goal_coord[1]] != 0)
+            {
+                final_goal_coord = Coordinates(field_w, field_h);
             }
+
+            filled_field[final_goal_coord[0], final_goal_coord[1]] = 2;
 
             List<int> Obstacles_coord = Coordinates(field_w, field_h);
 
-            for (int num = 0; num <= numObstacles; num++)
+            for (int num = 0; num < numObstacles; num++)
             {
                 while (filled_field[Obstacles_coord[0], Obstacles_coord[1]] != 0)
                 {
@@ -82,7 +76,7 @@ namespace gatherer_online_main
 
             List<int> Goals_coord = Coordinates(field_w, field_h);
 
-            for (int num = 0; num <= numObstacles; num++)
+            for (int num = 0; num < numGoals; num++)
             {
                 while (filled_field[Goals_coord[0], Goals_coord[1]] != 0)
                 {
@@ -100,6 +94,13 @@ namespace gatherer_online_main
             field_size = new int[field_w, field_h];
             numGoals = field_g;
             numObstacles = field_s;
+
+        }
+
+        public int[,] MyField(int field_w, int field_h, int field_s, int field_g)
+        {
+            filled_field = Filling(field_w, field_h, field_s, field_g);
+            return filled_field;
         }
     }
 }
