@@ -5,21 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:gatherer_online_main"
         mc:Ignorable="d"
-        Title="MyAgent v. 0.0" Height="350" Width="525">
+        Title="MyAgent v. 0.0" Height="570" Width="1050">
     <Grid>
-        <Label x:Name="lb_welcome" Content="Привет! Я умею генерировать поле любого размера с любыми параметрами.&#xD;&#xA;Ниже указаны поля, в которые необходимо занести желаемые значения и затем&#xD;&#xA;нажать на волшебную кнопку &quot;Сгенерировать&quot;.&#xD;&#xA;Wish all the best." HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="80" Width="497"/>
-        <Label x:Name="lb_width" Content="Кол-во клеток в ширину:" HorizontalAlignment="Left" Height="25" Margin="10,95,0,0" VerticalAlignment="Top" Width="115" FontSize="9"/>
-        <TextBox x:Name="tb_width" HorizontalAlignment="Left" Height="25" Margin="125,95,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="115" FontSize="14"/>
-        <Label x:Name="lb_height" Content="Кол-во клеток в высоту:" HorizontalAlignment="Left" Height="25" Margin="10,125,0,0" VerticalAlignment="Top" Width="115" FontSize="9"/>
-        <TextBox x:Name="tb_height" HorizontalAlignment="Left" Height="25" Margin="125,125,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="115" FontSize="14"/>
-        <Label x:Name="lb_stop" Content="Кол-во преград:" HorizontalAlignment="Left" Height="25" Margin="10,155,0,0" VerticalAlignment="Top" Width="115" FontSize="9"/>
-        <TextBox x:Name="tb_stop" HorizontalAlignment="Left" Height="25" Margin="125,155,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="115" FontSize="14"/>
-        <Label x:Name="lb_goals" Content="Кол-во целей:" HorizontalAlignment="Left" Height="25" Margin="10,185,0,0" VerticalAlignment="Top" Width="115" FontSize="9"/>
-        <TextBox x:Name="tb_goals" HorizontalAlignment="Left" Height="25" Margin="125,185,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="115" FontSize="14"/>
-        <Image x:Name="image_width" HorizontalAlignment="Left" Height="25" Margin="245,95,0,0" VerticalAlignment="Top" Width="50" Source="pack://siteoforigin:,,,/width.png" Stretch="Fill"/>
-        <Image x:Name="image_height" HorizontalAlignment="Left" Height="25" Margin="245,125,0,0" VerticalAlignment="Top" Width="50" Source="pack://siteoforigin:,,,/height.png" Stretch="Fill"/>
-        <Image x:Name="image_stop" HorizontalAlignment="Left" Height="25" Margin="258,155,0,0" VerticalAlignment="Top" Width="25" Source="Properties/stop_signal.png" Stretch="Fill"/>
-        <Image x:Name="image_goals" HorizontalAlignment="Left" Height="25" Margin="258,185,0,0" VerticalAlignment="Top" Width="25" Source="pack://siteoforigin:,,,/goal.jpg" Stretch="Fill"/>
-        <Button x:Name="bt_generate" Content="Сгенерировать" HorizontalAlignment="Left" Margin="50,249,0,0" VerticalAlignment="Top" Width="94"/>
+        <Label x:Name="lb_welcome" Content="Привет! Я умею генерировать поле любого размера с любыми параметрами.&#xD;&#xA;Ниже указаны поля, в которые необходимо занести желаемые значения и затем&#xD;&#xA;нажать на волшебную кнопку &quot;Сгенерировать&quot;.&#xD;&#xA;Wish all the best." Margin="10,10,0,0" FontSize="24" Height="182" VerticalAlignment="Top" HorizontalAlignment="Left" Width="1022"/>
+        <Label x:Name="lb_width" Content="Кол-во клеток в ширину:" HorizontalAlignment="Left" Height="47" Margin="15,197,0,0" VerticalAlignment="Top" Width="230" FontSize="18" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="tb_width" HorizontalAlignment="Left" Height="47" Margin="250,197,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="34" TextDecorations="{x:Null}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label x:Name="lb_height" Content="Кол-во клеток в высоту:" HorizontalAlignment="Left" Height="47" Margin="15,249,0,0" VerticalAlignment="Top" Width="230" FontSize="18" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="tb_height" HorizontalAlignment="Left" Height="47" Margin="250,249,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="34" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label x:Name="lb_stop" Content="Кол-во преград:" HorizontalAlignment="Left" Height="47" Margin="15,301,0,0" VerticalAlignment="Top" Width="230" FontSize="18" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="tb_stop" HorizontalAlignment="Left" Height="47" Margin="250,301,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="34" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label x:Name="lb_goals" Content="Кол-во целей:" HorizontalAlignment="Left" Height="47" Margin="15,353,0,0" VerticalAlignment="Top" Width="230" FontSize="18" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="tb_goals" HorizontalAlignment="Left" Height="47" Margin="250,353,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="34" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Image x:Name="image_width" HorizontalAlignment="Left" Height="47" Margin="375,197,0,0" VerticalAlignment="Top" Width="120" Source="Properties/width.png" Stretch="Fill"/>
+        <Image x:Name="image_height" HorizontalAlignment="Left" Height="47" Margin="375,249,0,0" VerticalAlignment="Top" Width="120" Source="Properties/height.png" Stretch="Fill"/>
+        <Image x:Name="image_stop" HorizontalAlignment="Left" Height="47" Margin="406,301,0,0" VerticalAlignment="Top" Width="54" Source="Properties/stop_signal.png" Stretch="Fill"/>
+        <Image x:Name="image_goals" HorizontalAlignment="Left" Height="47" Margin="406,353,0,0" VerticalAlignment="Top" Width="54" Source="Properties/goal.jpg" Stretch="Fill"/>
+        <Button x:Name="bt_generate" Content="Сгенерировать" Margin="15,462,0,0" Click="bt_generate_Click" Height="40" VerticalAlignment="Top" HorizontalAlignment="Left" Width="355"/>
     </Grid>
+    
 </Window>
