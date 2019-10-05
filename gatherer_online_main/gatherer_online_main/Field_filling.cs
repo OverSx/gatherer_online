@@ -21,19 +21,15 @@ namespace gatherer_online_main
         Random rand = new Random();
         int[,] filled_field;
 
-        private List<int> agent_coordinates(int field_w, int field_h)
+        private List<int> Coordinates(int field_w, int field_h)
         {
             int x = rand.Next(field_w + 1);
             int y = rand.Next(field_h + 1);
 
-            List<int> coordinates = new List<int>();
-            coordinates.Add(x);
-            coordinates.Add(y);
+            List<int> coordinates = new List<int> {x, y};
 
             return coordinates;
         }
-
-
 
         public Field_filling(int field_w, int field_h, int field_s, int field_g)
         {
@@ -41,12 +37,36 @@ namespace gatherer_online_main
             numGoals = field_g;
             numObstacles = field_s;
 
+            List<int> agent_coord = Coordinates(field_w, field_h);
             for (int i = 0; i <= field_w; i++)
             {
                 for (int j = 0; j <= field_h; j++)
                 {
-                    filled_field = [i]
+                    if (i == agent_coord[0] && j == agent_coord[1])
+                    {
+                        filled_field[i, j] = 4;
+                    }
+
+                    filled_field[i, j] = 0;
                 }
+            }
+
+            List<int> final_goal_coord = Coordinates(field_w, field_h);
+            
+            if (filled_field[final_goal_coord[0], final_goal_coord[1]] == 0)
+            {
+                filled_field[final_goal_coord[0], final_goal_coord[1]] = 2;
+            }
+            else
+            {
+                while(filled_field[final_goal_coord[0], final_goal_coord[1]] != 0)
+                {
+                    final_goal_coord = Coordinates(field_w, field_h);
+                }
+
+                filled_field[final_goal_coord[0], final_goal_coord[1]] = 2;
+            }
+
             }
         }
     }
