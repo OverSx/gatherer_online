@@ -16,6 +16,8 @@ namespace gatherer_online_main
         private int field_height;
         private int field_stop;
         private int field_goals;
+        private int[,] field;
+        Field_filling field_with_elem;
 
         public playing_field(int field_w, int field_h, int field_s, int field_g)
         {
@@ -23,6 +25,50 @@ namespace gatherer_online_main
             field_height = field_h;
             field_stop = field_s;
             field_goals = field_g;
+        }
+
+        public Grid grid { private set; get; }
+
+        private Grid Fill_field_with_images(int [,] field)
+        {
+            Grid myGrid = new Grid();
+
+            for (int i = 0; i < field_width; i++)
+            {
+                myGrid.ColumnDefinitions.Add(new ColumnDefinition());
+            }
+
+            for (int j = 0; j < field_height; j++)
+            {
+                myGrid.RowDefinitions.Add(new RowDefinition());
+            }
+            myGrid.ShowGridLines = true;
+            myGrid.Height = 500;
+            myGrid.Width = 492;
+            myGrid.VerticalAlignment = VerticalAlignment.Top;
+            myGrid.HorizontalAlignment = HorizontalAlignment.Left;
+            myGrid.SetValue(Grid.ColumnProperty, 1);
+
+
+            myGrid.Children.Add(Final_goal(field));
+
+            List<Image> myObstacles = Obstacles(field);
+            for (int i = 0; i < field_stop; i++)
+            {
+                myGrid.Children.Add(myObstacles[i]);
+            }
+
+            List<Image> myGoals = Goals(field);
+            for (int i = 0; i < field_goals; i++)
+            {
+                myGrid.Children.Add(myGoals[i]);
+            }
+
+            myGrid.Children.Add(Agent(field));
+
+            this.grid = myGrid;
+
+            return myGrid;
         }
 
         private Image Agent(int[,] filled_field)
@@ -38,15 +84,15 @@ namespace gatherer_online_main
                 {
                     if (filled_field[i, j] == 4)
                     {
-                        x = j;
-                        y = i;
+                        x = i;
+                        y = j;
                     }
                 }
             }
 
             BitmapImage forAgent = new BitmapImage();
             forAgent.BeginInit();
-            forAgent.UriSource = new Uri("Joy.PNG");
+            forAgent.UriSource = new Uri("Properties/Joy.PNG", UriKind.Relative);
             forAgent.EndInit();
             agent.Stretch = Stretch.Fill;
             agent.Source = forAgent;
@@ -70,15 +116,15 @@ namespace gatherer_online_main
                 {
                     if (filled_field[i, j] == 2)
                     {
-                        x = j;
-                        y = i;
+                        x = i;
+                        y = j;
                     }
                 }
             }
 
             BitmapImage forfinal_goal = new BitmapImage();
             forfinal_goal.BeginInit();
-            forfinal_goal.UriSource = new Uri("final_goal.jpg");
+            forfinal_goal.UriSource = new Uri("Properties/final_goal.jpg", UriKind.Relative);
             forfinal_goal.EndInit();
             final_goal.Stretch = Stretch.Fill;
             final_goal.Source = forfinal_goal;
@@ -97,18 +143,18 @@ namespace gatherer_online_main
 
             BitmapImage forObstacles = new BitmapImage();
             forObstacles.BeginInit();
-            forObstacles.UriSource = new Uri("stop_signal.png");
+            forObstacles.UriSource = new Uri("Properties/stop_signal.png", UriKind.Relative);
             forObstacles.EndInit();
 
-            for (int i = 0; i <= field_stop; i++)
+            for (int i = 0; i < field_stop; i++)
             {
                 Image obstacle = new Image();
                 obstacles.Add(obstacle);
             }
 
-            for(int i = 0; i <= field_width; i++)
+            for(int i = 0; i < field_width; i++)
             {
-                for (int j = 0; j <= field_height; j++)
+                for (int j = 0; j < field_height; j++)
                 {
                     if (filled_field[i,j] == 3)
                     {
@@ -118,12 +164,12 @@ namespace gatherer_online_main
                 }
             }
 
-            for(int i = 0; i <= field_stop; i++)
+            for(int i = 0; i < field_stop; i++)
             {
                 obstacles[i].Stretch = Stretch.Fill;
                 obstacles[i].Source = forObstacles;
-                obstacles[i].SetValue(Grid.RowProperty, i);
-                obstacles[i].SetValue(Grid.ColumnProperty, i);
+                obstacles[i].SetValue(Grid.RowProperty, obstaclesX[i]);
+                obstacles[i].SetValue(Grid.ColumnProperty, obstaclesY[i]);
             }
 
             return obstacles;
@@ -137,18 +183,18 @@ namespace gatherer_online_main
 
             BitmapImage forGoals = new BitmapImage();
             forGoals.BeginInit();
-            forGoals.UriSource = new Uri("goal.jpg");
+            forGoals.UriSource = new Uri("Properties/goal.jpg", UriKind.Relative);
             forGoals.EndInit();
 
-            for (int i = 0; i <= field_stop; i++)
+            for (int i = 0; i < field_goals; i++)
             {
                 Image obstacle = new Image();
                 goals.Add(obstacle);
             }
 
-            for (int i = 0; i <= field_width; i++)
+            for (int i = 0; i < field_width; i++)
             {
-                for (int j = 0; j <= field_height; j++)
+                for (int j = 0; j < field_height; j++)
                 {
                     if (filled_field[i, j] == 1)
                     {
@@ -158,12 +204,12 @@ namespace gatherer_online_main
                 }
             }
 
-            for (int i = 0; i <= field_stop; i++)
+            for (int i = 0; i < field_goals; i++)
             {
                 goals[i].Stretch = Stretch.Fill;
                 goals[i].Source = forGoals;
-                goals[i].SetValue(Grid.RowProperty, i);
-                goals[i].SetValue(Grid.ColumnProperty, i);
+                goals[i].SetValue(Grid.RowProperty, goalsX[i]);
+                goals[i].SetValue(Grid.ColumnProperty, goalsY[i]);
             }
 
             return goals;
@@ -172,20 +218,14 @@ namespace gatherer_online_main
         public Field Generate_field()
         {
             Field field_for_generate = new Field();
-            
-            for (int i = 0; i <= field_width; i++)
-            {
-                field_for_generate.Playing_grid.ColumnDefinitions.Add(new ColumnDefinition());
-            }
+            Grid newGrid = new Grid();
 
-            for (int j = 0; j <= field_height; j++)
-            {
-                field_for_generate.Playing_grid.RowDefinitions.Add(new RowDefinition());
-            }
+            field_with_elem = new Field_filling(field_width, field_height, field_stop, field_goals);
+            field = field_with_elem.MyField(field_width, field_height, field_stop, field_goals);
 
-            field_for_generate.Playing_grid.ShowGridLines = true;
-
-
+            newGrid = Fill_field_with_images(field);
+            field_for_generate.MainGridField.Children.RemoveAt(0);
+            field_for_generate.MainGridField.Children.Insert(0, newGrid);
 
             return field_for_generate;
         }
