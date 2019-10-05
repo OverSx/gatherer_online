@@ -79,6 +79,18 @@ namespace gatherer_online_main
 
                 filled_field[Obstacles_coord[0], Obstacles_coord[1]] = 3;
             }
+
+            List<int> Goals_coord = Coordinates(field_w, field_h);
+
+            for (int num = 0; num <= numObstacles; num++)
+            {
+                while (filled_field[Goals_coord[0], Goals_coord[1]] != 0)
+                {
+                    Goals_coord = Coordinates(field_w, field_h);
+                }
+
+                filled_field[Goals_coord[0], Goals_coord[1]] = 1;
+            }
         }
     }
 }
