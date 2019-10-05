@@ -27,6 +27,7 @@ namespace gatherer_online_main
 
         public Field generate_field()
         private Image Agent(int[,] field)
+        private Image Agent(int[,] filled_field)
         {
             Image agent = new Image();
 
@@ -38,6 +39,7 @@ namespace gatherer_online_main
                 for (int j = 0; j < field_height; j++)
                 {
                     if (field[i, j] == 4)
+                    if (filled_field[i, j] == 4)
                     {
                         x = j;
                         y = i;
@@ -59,6 +61,7 @@ namespace gatherer_online_main
         }
 
         private Image Final_goal(int[,] field)
+        private Image Final_goal(int[,] filled_field)
         {
             Image final_goal = new Image();
 
@@ -70,6 +73,7 @@ namespace gatherer_online_main
                 for (int j = 0; j < field_height; j++)
                 {
                     if (field[i, j] == 2)
+                    if (filled_field[i, j] == 2)
                     {
                         x = j;
                         y = i;
@@ -88,6 +92,46 @@ namespace gatherer_online_main
             final_goal.SetValue(Grid.ColumnProperty, y);
 
             return final_goal;
+        }
+
+        private List<Image> Obstacles(int[,] filled_field)
+        {
+            List<Image> obstacles = new List<Image>();
+            List<int> obstaclesX = new List<int>();
+            List<int> obstaclesY = new List<int>();
+
+            BitmapImage forObstacles = new BitmapImage();
+            forObstacles.BeginInit();
+            forObstacles.UriSource = new Uri("stop_signal.png");
+            forObstacles.EndInit();
+
+            for (int i = 0; i <= field_stop; i++)
+            {
+                Image obstacle = new Image();
+                obstacles.Add(obstacle);
+            }
+
+            for(int i = 0; i <= field_width; i++)
+            {
+                for (int j = 0; j <= field_height; j++)
+                {
+                    if (filled_field[i,j] == 3)
+                    {
+                        obstaclesX.Add(i);
+                        obstaclesY.Add(j);
+                    }
+                }
+            }
+
+            for(int i = 0; i <= field_stop; i++)
+            {
+                obstacles[i].Stretch = Stretch.Fill;
+                obstacles[i].Source = forObstacles;
+                obstacles[i].SetValue(Grid.RowProperty, i);
+                obstacles[i].SetValue(Grid.ColumnProperty, i);
+            }
+
+            return obstacles;
         }
 
         public Field Generate_field()
