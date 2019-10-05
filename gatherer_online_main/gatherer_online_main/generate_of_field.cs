@@ -51,10 +51,43 @@ namespace gatherer_online_main
             forAgent.EndInit();
             agent.Stretch = Stretch.Fill;
             agent.Source = forAgent;
+
             agent.SetValue(Grid.RowProperty, x);
             agent.SetValue(Grid.ColumnProperty, y);
 
             return agent;
+        }
+
+        private Image Final_goal(int[,] field)
+        {
+            Image final_goal = new Image();
+
+            int x = 0;
+            int y = 0;
+
+            for (int i = 0; i < field_width; i++)
+            {
+                for (int j = 0; j < field_height; j++)
+                {
+                    if (field[i, j] == 2)
+                    {
+                        x = j;
+                        y = i;
+                    }
+                }
+            }
+
+            BitmapImage forfinal_goal = new BitmapImage();
+            forfinal_goal.BeginInit();
+            forfinal_goal.UriSource = new Uri("final_goal.jpg");
+            forfinal_goal.EndInit();
+            final_goal.Stretch = Stretch.Fill;
+            final_goal.Source = forfinal_goal;
+
+            final_goal.SetValue(Grid.RowProperty, x);
+            final_goal.SetValue(Grid.ColumnProperty, y);
+
+            return final_goal;
         }
 
         public Field Generate_field()
