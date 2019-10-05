@@ -25,8 +25,6 @@ namespace gatherer_online_main
             field_goals = field_g;
         }
 
-        public Field generate_field()
-        private Image Agent(int[,] field)
         private Image Agent(int[,] filled_field)
         {
             Image agent = new Image();
@@ -38,7 +36,6 @@ namespace gatherer_online_main
             {
                 for (int j = 0; j < field_height; j++)
                 {
-                    if (field[i, j] == 4)
                     if (filled_field[i, j] == 4)
                     {
                         x = j;
@@ -60,7 +57,6 @@ namespace gatherer_online_main
             return agent;
         }
 
-        private Image Final_goal(int[,] field)
         private Image Final_goal(int[,] filled_field)
         {
             Image final_goal = new Image();
@@ -72,7 +68,6 @@ namespace gatherer_online_main
             {
                 for (int j = 0; j < field_height; j++)
                 {
-                    if (field[i, j] == 2)
                     if (filled_field[i, j] == 2)
                     {
                         x = j;
@@ -132,6 +127,46 @@ namespace gatherer_online_main
             }
 
             return obstacles;
+        }
+
+        private List<Image> Goals(int[,] filled_field)
+        {
+            List<Image> goals = new List<Image>();
+            List<int> goalsX = new List<int>();
+            List<int> goalsY = new List<int>();
+
+            BitmapImage forGoals = new BitmapImage();
+            forGoals.BeginInit();
+            forGoals.UriSource = new Uri("goal.jpg");
+            forGoals.EndInit();
+
+            for (int i = 0; i <= field_stop; i++)
+            {
+                Image obstacle = new Image();
+                goals.Add(obstacle);
+            }
+
+            for (int i = 0; i <= field_width; i++)
+            {
+                for (int j = 0; j <= field_height; j++)
+                {
+                    if (filled_field[i, j] == 1)
+                    {
+                        goalsX.Add(i);
+                        goalsY.Add(j);
+                    }
+                }
+            }
+
+            for (int i = 0; i <= field_stop; i++)
+            {
+                goals[i].Stretch = Stretch.Fill;
+                goals[i].Source = forGoals;
+                goals[i].SetValue(Grid.RowProperty, i);
+                goals[i].SetValue(Grid.ColumnProperty, i);
+            }
+
+            return goals;
         }
 
         public Field Generate_field()
