@@ -24,5 +24,12 @@ namespace gatherer_online_main
         {
             InitializeComponent();
         }
+
+        private void bt_generate_Click(object sender, RoutedEventArgs e)
+        {
+            playing_field field = new playing_field(int.Parse(tb_width.Text), int.Parse(tb_height.Text), int.Parse(tb_stop.Text), int.Parse(tb_goals.Text));
+            Field new_field = field.generate_field();
+            new_field.ShowDialog();
+        }
     }
 }
