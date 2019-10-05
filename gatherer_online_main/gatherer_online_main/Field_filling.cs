@@ -31,7 +31,7 @@ namespace gatherer_online_main
             return coordinates;
         }
 
-        public Field_filling(int field_w, int field_h, int field_s, int field_g)
+        private int[,] Filling(int field_w, int field_h, int field_s, int field_g)
         {
             field_size = new int[field_w, field_h];
             numGoals = field_g;
@@ -91,6 +91,15 @@ namespace gatherer_online_main
 
                 filled_field[Goals_coord[0], Goals_coord[1]] = 1;
             }
+
+            return filled_field;
+        }
+
+        public Field_filling(int field_w, int field_h, int field_s, int field_g)
+        {
+            field_size = new int[field_w, field_h];
+            numGoals = field_g;
+            numObstacles = field_s;
         }
     }
 }
