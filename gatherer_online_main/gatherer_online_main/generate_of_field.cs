@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace gatherer_online_main
 {
@@ -24,6 +26,38 @@ namespace gatherer_online_main
         }
 
         public Field generate_field()
+        private Image Agent(int[,] field)
+        {
+            Image agent = new Image();
+
+            int x = 0;
+            int y = 0;
+
+            for (int i = 0; i < field_width; i++)
+            {
+                for (int j = 0; j < field_height; j++)
+                {
+                    if (field[i, j] == 4)
+                    {
+                        x = j;
+                        y = i;
+                    }
+                }
+            }
+
+            BitmapImage forAgent = new BitmapImage();
+            forAgent.BeginInit();
+            forAgent.UriSource = new Uri("Joy.PNG");
+            forAgent.EndInit();
+            agent.Stretch = Stretch.Fill;
+            agent.Source = forAgent;
+            agent.SetValue(Grid.RowProperty, x);
+            agent.SetValue(Grid.ColumnProperty, y);
+
+            return agent;
+        }
+
+        public Field Generate_field()
         {
             Field field_for_generate = new Field();
             
@@ -38,6 +72,7 @@ namespace gatherer_online_main
             }
 
             field_for_generate.Playing_grid.ShowGridLines = true;
+
 
 
             return field_for_generate;

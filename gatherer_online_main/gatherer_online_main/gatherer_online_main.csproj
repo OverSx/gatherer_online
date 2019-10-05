@@ -70,6 +70,7 @@
     <Compile Include="Field.xaml.cs">
       <DependentUpon>Field.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Field_filling.cs" />
     <Compile Include="generate_of_field.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -134,6 +135,12 @@
     <Resource Include="Properties\goal.jpg" />
     <Resource Include="Properties\height.png" />
     <Resource Include="Properties\width.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Properties\Failure.PNG" />
+    <Resource Include="Properties\Joy.PNG" />
+    <Resource Include="Properties\Joy2.PNG" />
+    <Resource Include="Properties\Wonder.PNG" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
