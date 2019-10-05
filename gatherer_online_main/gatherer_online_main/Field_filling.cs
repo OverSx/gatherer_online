@@ -26,12 +26,14 @@ namespace gatherer_online_main
             int x = rand.Next(field_w + 1);
             int y = rand.Next(field_h + 1);
 
-            List<int> coordinates = new List<int>;
+            List<int> coordinates = new List<int>();
             coordinates.Add(x);
             coordinates.Add(y);
 
             return coordinates;
         }
+
+
 
         public Field_filling(int field_w, int field_h, int field_s, int field_g)
         {
