@@ -38,6 +38,7 @@ namespace gatherer_online_main
             numObstacles = field_s;
 
             List<int> agent_coord = Coordinates(field_w, field_h);
+
             for (int i = 0; i <= field_w; i++)
             {
                 for (int j = 0; j <= field_h; j++)
@@ -67,6 +68,16 @@ namespace gatherer_online_main
                 filled_field[final_goal_coord[0], final_goal_coord[1]] = 2;
             }
 
+            List<int> Obstacles_coord = Coordinates(field_w, field_h);
+
+            for (int num = 0; num <= numObstacles; num++)
+            {
+                while (filled_field[Obstacles_coord[0], Obstacles_coord[1]] != 0)
+                {
+                    Obstacles_coord = Coordinates(field_w, field_h);
+                }
+
+                filled_field[Obstacles_coord[0], Obstacles_coord[1]] = 3;
             }
         }
     }
