@@ -76,6 +76,7 @@ namespace gatherer_online_main
 
             int x = 0;
             int y = 0;
+            bool bryaka = false;
 
             for (int i = 0; i < field_width; i++)
             {
@@ -85,7 +86,13 @@ namespace gatherer_online_main
                     {
                         x = i;
                         y = j;
+                        bryaka = true;
+                        break;
                     }
+                }
+                if(bryaka)
+                {
+                    break;
                 }
             }
 
@@ -108,6 +115,7 @@ namespace gatherer_online_main
 
             int x = 0;
             int y = 0;
+            bool bryaka = false;
 
             for (int i = 0; i < field_width; i++)
             {
@@ -117,7 +125,13 @@ namespace gatherer_online_main
                     {
                         x = i;
                         y = j;
+                        bryaka = true;
+                        break;
                     }
+                }
+                if (bryaka)
+                {
+                    break;
                 }
             }
 
@@ -227,6 +241,11 @@ namespace gatherer_online_main
             field_for_generate.MainGridField.Children.Insert(0, newGrid);
 
             return field_for_generate;
+        }
+
+        public int[,] GetField()
+        {
+            return field;
         }
     }
 }
