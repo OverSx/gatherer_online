@@ -47,7 +47,6 @@ namespace gatherer_online_main
             myGrid.Width = 492;
             myGrid.VerticalAlignment = VerticalAlignment.Top;
             myGrid.HorizontalAlignment = HorizontalAlignment.Left;
-            myGrid.SetValue(Grid.ColumnProperty, 1);
 
 
             myGrid.Children.Add(Final_goal(field));
@@ -97,8 +96,8 @@ namespace gatherer_online_main
             agent.Stretch = Stretch.Fill;
             agent.Source = forAgent;
 
-            agent.SetValue(Grid.RowProperty, x);
-            agent.SetValue(Grid.ColumnProperty, y);
+            agent.SetValue(Grid.RowProperty, y);
+            agent.SetValue(Grid.ColumnProperty, x);
 
             return agent;
         }
@@ -129,8 +128,8 @@ namespace gatherer_online_main
             final_goal.Stretch = Stretch.Fill;
             final_goal.Source = forfinal_goal;
 
-            final_goal.SetValue(Grid.RowProperty, x);
-            final_goal.SetValue(Grid.ColumnProperty, y);
+            final_goal.SetValue(Grid.RowProperty, y);
+            final_goal.SetValue(Grid.ColumnProperty, x);
 
             return final_goal;
         }
@@ -168,8 +167,8 @@ namespace gatherer_online_main
             {
                 obstacles[i].Stretch = Stretch.Fill;
                 obstacles[i].Source = forObstacles;
-                obstacles[i].SetValue(Grid.RowProperty, obstaclesX[i]);
-                obstacles[i].SetValue(Grid.ColumnProperty, obstaclesY[i]);
+                obstacles[i].SetValue(Grid.RowProperty, obstaclesY[i]);
+                obstacles[i].SetValue(Grid.ColumnProperty, obstaclesX[i]);
             }
 
             return obstacles;
@@ -188,8 +187,8 @@ namespace gatherer_online_main
 
             for (int i = 0; i < field_goals; i++)
             {
-                Image obstacle = new Image();
-                goals.Add(obstacle);
+                Image goal = new Image();
+                goals.Add(goal);
             }
 
             for (int i = 0; i < field_width; i++)
@@ -208,8 +207,8 @@ namespace gatherer_online_main
             {
                 goals[i].Stretch = Stretch.Fill;
                 goals[i].Source = forGoals;
-                goals[i].SetValue(Grid.RowProperty, goalsX[i]);
-                goals[i].SetValue(Grid.ColumnProperty, goalsY[i]);
+                goals[i].SetValue(Grid.RowProperty, goalsY[i]);
+                goals[i].SetValue(Grid.ColumnProperty, goalsX[i]);
             }
 
             return goals;
