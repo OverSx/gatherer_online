@@ -23,5 +23,16 @@ namespace gatherer_online_main
         {
             InitializeComponent();
         }
+
+        private void bt_playAll_Click(object sender, RoutedEventArgs e)
+        {
+            Plotter Plot = new Plotter();
+            Plot.Let_find_way();
+        }
+
+        private void bt_steBYstep_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
