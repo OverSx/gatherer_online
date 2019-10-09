@@ -29,9 +29,17 @@ namespace gatherer_online_main
 
         private void bt_generate_Click(object sender, RoutedEventArgs e)
         {
-            playing_field field = new playing_field(int.Parse(tb_width.Text), int.Parse(tb_height.Text), int.Parse(tb_stop.Text), int.Parse(tb_goals.Text));
-            Field new_field = field.Generate_field();
-            new_field.ShowDialog();
+            if (int.Parse(tb_width.Text) < 3 || int.Parse(tb_height.Text) < 3)
+            {
+                WarningWindow Warn = new WarningWindow();
+                Warn.ShowDialog();
+            }
+            else
+            {
+                playing_field field = new playing_field(int.Parse(tb_width.Text), int.Parse(tb_height.Text), int.Parse(tb_stop.Text), int.Parse(tb_goals.Text));
+                Field new_field = field.Generate_field();
+                new_field.ShowDialog();
+            }
         }
 
         private void tb_width_KeyDown(object sender, KeyEventArgs e)
