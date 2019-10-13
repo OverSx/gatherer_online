@@ -34,10 +34,15 @@ namespace gatherer_online_main
                 WarningWindow Warn = new WarningWindow();
                 Warn.ShowDialog();
             }
+            else if (int.Parse(tb_stop.Text) * int.Parse(tb_goals.Text) - 2 > int.Parse(tb_width.Text) * int.Parse(tb_height.Text))
+            {
+                WarningWindow Warn = new WarningWindow();
+                Warn.ShowDialog();
+            }
             else
             {
-                playing_field field = new playing_field(int.Parse(tb_width.Text), int.Parse(tb_height.Text), int.Parse(tb_stop.Text), int.Parse(tb_goals.Text));
-                Field new_field = field.Generate_field();
+                playing_field field = new playing_field();
+                Field new_field = field.Generate_field(int.Parse(tb_width.Text), int.Parse(tb_height.Text), int.Parse(tb_stop.Text), int.Parse(tb_goals.Text));
                 new_field.ShowDialog();
             }
         }
