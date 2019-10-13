@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:gatherer_online_main"
         mc:Ignorable="d"
-        Title="MyAgent v. 0.0" Height="570" Width="1050">
+        Title="MyAgent v. 1.0" Height="570" Width="1050">
     <Grid>
         <Label x:Name="lb_welcome" Content="Привет! Я умею генерировать поле любого размера с любыми параметрами.&#xD;&#xA;Ниже указаны поля, в которые необходимо занести желаемые значения и затем&#xD;&#xA;нажать на волшебную кнопку &quot;Сгенерировать&quot;.&#xD;&#xA;Wish all the best." Margin="10,10,0,0" FontSize="24" Height="182" VerticalAlignment="Top" HorizontalAlignment="Left" Width="1022"/>
         <Label x:Name="lb_width" Content="Кол-во столбцов:" HorizontalAlignment="Left" Height="47" Margin="15,197,0,0" VerticalAlignment="Top" Width="230" FontSize="18" VerticalContentAlignment="Center"/>
