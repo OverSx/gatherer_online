@@ -20,6 +20,8 @@ namespace gatherer_online_main
             List<List<int>> FinalWay = new List<List<int>>();
             List<int> FinalWayX = new List<int>();
             List<int> FinalWayY = new List<int>();
+            List<int> collected_goalX = new List<int>();
+            List<int> collected_goalY = new List<int>();
             List<int> Agent = new List<int>();
             int[,] newField = new int[field.GetLength(0), field.GetLength(1)];
             field_filling(newField, field);
@@ -39,8 +41,14 @@ namespace gatherer_online_main
                     FinalWayX.Add(FinalWay[0][j]);
                     FinalWayY.Add(FinalWay[1][j]);
                 }
+                collected_goalX.Add(FinalWayX[FinalWayX.Count - 1]);
+                collected_goalY.Add(FinalWayY[FinalWayY.Count - 1]);
                 field_filling(newField, field);
                 newField[Agent[0], Agent[1]] = 0;
+                for(int k = 0; k < collected_goalX.Count; k++)
+                {
+                    newField[collected_goalX[k], collected_goalY[k]] = 0;
+                }
                 newField[FinalWayX[FinalWayX.Count - 1], FinalWayY[FinalWayY.Count - 1]] = 4;
             }
 
