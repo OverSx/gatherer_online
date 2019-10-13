@@ -92,6 +92,7 @@ namespace gatherer_online_main
             List<int> WaytoGoalX = new List<int>();
             List<int> WaytoGoalY = new List<int>();
             bool add = true;
+            bool WayIsExist = false;
             int step = 4;
             List<int> Agent = new List<int>();
             List<int> GoalsX = new List<int>();
@@ -99,6 +100,7 @@ namespace gatherer_online_main
 
             while (add)
             {
+                WayIsExist = false;
                 add = false;
                 for (int i = 0; i < newField.GetLength(0); i++)
                 {
@@ -112,10 +114,12 @@ namespace gatherer_online_main
                                 {
                                     GoalsX.Add(i - 1);
                                     GoalsY.Add(j);
+                                    WayIsExist = true;
                                 }
                                 if (newField[i - 1, j] == 0)
                                 {
                                     newField[i - 1, j] = step + 1;
+                                    WayIsExist = true;
                                 }
                             }
 
@@ -125,10 +129,12 @@ namespace gatherer_online_main
                                 {
                                     GoalsX.Add(i);
                                     GoalsY.Add(j - 1);
+                                    WayIsExist = true;
                                 }
                                 if (newField[i, j - 1] == 0)
                                 {
                                     newField[i, j - 1] = step + 1;
+                                    WayIsExist = true;
                                 }
                             }
 
@@ -138,10 +144,12 @@ namespace gatherer_online_main
                                 {
                                     GoalsX.Add(i + 1);
                                     GoalsY.Add(j);
+                                    WayIsExist = true;
                                 }
                                 if (newField[i + 1, j] == 0)
                                 {
                                     newField[i + 1, j] = step + 1;
+                                    WayIsExist = true;
                                 }
                             }
 
@@ -151,16 +159,21 @@ namespace gatherer_online_main
                                 {
                                     GoalsX.Add(i);
                                     GoalsY.Add(j + 1);
+                                    WayIsExist = true;
                                 }
                                 if (newField[i, j + 1] == 0)
                                 {
                                     newField[i, j + 1] = step + 1;
+                                    WayIsExist = true;
                                 }
                             }
                         }
                     }
                 }
-
+                if (WayIsExist == false)
+                {
+                    break;
+                }
                 add = true;
                 if (GoalsX.Count != 0)
                 {
@@ -169,6 +182,10 @@ namespace gatherer_online_main
                 step++;
             }
 
+            if (WayIsExist == false)
+            {
+                return WayIsHere;
+            }
             Agent = FindMyAgent(newField);
             WayIsHere = finding_way(newField, GoalsX[0], GoalsY[0], Agent[0], Agent[1], step);
             return WayIsHere;
@@ -181,6 +198,7 @@ namespace gatherer_online_main
             List<int> WaytoGoalX = new List<int>();
             List<int> WaytoGoalY = new List<int>();
             bool add = true;
+            bool WayIsExist = false;
             int step = 4;
             List<int> Agent = new List<int>();
             List<int> GoalsX = new List<int>();
@@ -188,6 +206,7 @@ namespace gatherer_online_main
 
             while (add)
             {
+                WayIsExist = false;
                 add = false;
                 for (int i = 0; i < newField.GetLength(0); i++)
                 {
@@ -201,10 +220,12 @@ namespace gatherer_online_main
                                 {
                                     GoalsX.Add(i - 1);
                                     GoalsY.Add(j);
+                                    WayIsExist = true;
                                 }
                                 if (newField[i - 1, j] == 0)
                                 {
                                     newField[i - 1, j] = step + 1;
+                                    WayIsExist = true;
                                 }
                             }
 
@@ -214,10 +235,12 @@ namespace gatherer_online_main
                                 {
                                     GoalsX.Add(i);
                                     GoalsY.Add(j - 1);
+                                    WayIsExist = true;
                                 }
                                 if (newField[i, j - 1] == 0)
                                 {
                                     newField[i, j - 1] = step + 1;
+                                    WayIsExist = true;
                                 }
                             }
 
@@ -227,10 +250,12 @@ namespace gatherer_online_main
                                 {
                                     GoalsX.Add(i + 1);
                                     GoalsY.Add(j);
+                                    WayIsExist = true;
                                 }
                                 if (newField[i + 1, j] == 0)
                                 {
                                     newField[i + 1, j] = step + 1;
+                                    WayIsExist = true;
                                 }
                             }
 
@@ -240,16 +265,22 @@ namespace gatherer_online_main
                                 {
                                     GoalsX.Add(i);
                                     GoalsY.Add(j + 1);
+                                    WayIsExist = true;
                                 }
                                 if (newField[i, j + 1] == 0)
                                 {
                                     newField[i, j + 1] = step + 1;
+                                    WayIsExist = true;
                                 }
                             }
                         }
                     }
                 }
 
+                if (WayIsExist == false)
+                {
+                    break;
+                }
                 add = true;
                 if (GoalsX.Count != 0)
                 {
@@ -258,6 +289,10 @@ namespace gatherer_online_main
                 step++;
             }
 
+            if (WayIsExist == false)
+            {
+                return WayIsHere;
+            }
             Agent = FindMyAgent(newField);
             WayIsHere = finding_way(newField, GoalsX[0], GoalsY[0], Agent[0], Agent[1], step);
             return WayIsHere;
