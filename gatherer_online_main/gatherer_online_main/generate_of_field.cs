@@ -255,5 +255,34 @@ namespace gatherer_online_main
         {
             return field;
         }
+
+        public int[,] Step_field(int step, int [,] this_is_current_field, List<List<int>> list_with_way)
+        {
+            bool AgentCoordIsFind = false;
+            int [,] tempField = this_is_current_field;
+
+            for (int i = 0; i < tempField.GetLength(0); i++)
+            {
+                for (int j = 0; j < tempField.GetLength(1); j++)
+                {
+                    if (tempField[i, j] == 4)
+                    {
+                        tempField[i, j] = 0;
+                        AgentCoordIsFind = true;
+                        break;
+                    }
+                }
+                if (AgentCoordIsFind)
+                {
+                    break;
+                }
+            }
+            if (list_with_way[0].Count != step)
+            {
+                tempField[list_with_way[0][step], list_with_way[1][step]] = 4;
+            }
+
+            return tempField;
+        }
     }
 }
