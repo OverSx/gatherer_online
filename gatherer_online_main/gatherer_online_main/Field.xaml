@@ -10,10 +10,8 @@
         <Grid x:Name="Playing_grid" HorizontalAlignment="Left" Height="500" VerticalAlignment="Top" Width="492"/>
         <GridSplitter HorizontalAlignment="Left" Height="10" Margin="0,500,0,0" VerticalAlignment="Top" Width="492"/>
         <Grid HorizontalAlignment="Left" Height="79" Margin="0,510,0,0" VerticalAlignment="Top" Width="492">
-            <Button x:Name="bt_playAll" Content="Пройти" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" Click="bt_playAll_Click"/>
-            <Label x:Name="lb_playAll" Content="" HorizontalAlignment="Left" Margin="10,43,0,0" VerticalAlignment="Top" Width="100"/>
-            <Button x:Name="bt_steBYstep" Content="Пошагово" HorizontalAlignment="Left" Margin="407,10,0,0" VerticalAlignment="Top" Width="75" Click="bt_steBYstep_Click"/>
-            <Label x:Name="lb_stepBYstep" Content="" HorizontalAlignment="Left" Margin="382,43,0,0" VerticalAlignment="Top" Width="100"/>
+            <Button x:Name="bt_steBYstep" Content="Поехали" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" Click="bt_steBYstep_Click"/>
+            <Label x:Name="lb_stepBYstep" Content="" HorizontalAlignment="Left" Margin="10,43,0,0" VerticalAlignment="Top" Width="472"/>
         </Grid>
 
     </Grid>
