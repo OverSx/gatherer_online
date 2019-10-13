@@ -59,7 +59,7 @@ namespace gatherer_online_main
             return FinalWay;
         }
 
-        private List<int> FindMyAgent(int [,] field)
+        public List<int> FindMyAgent(int [,] field)
         {
             List<int> AgentCoord = new List<int>();
             bool AgentCoordIsFind = false;
@@ -389,7 +389,7 @@ namespace gatherer_online_main
             return WAY;
         }
 
-        private void field_filling(int [,] recipient, int [,] donor)
+        public void field_filling(int [,] recipient, int [,] donor)
         {
             for (int i = 0; i < donor.GetLength(0); i++)
             {
