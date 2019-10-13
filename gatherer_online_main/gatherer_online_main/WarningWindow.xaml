@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:gatherer_online_main"
         mc:Ignorable="d"
-        Title="Предупреждение" Height="200" Width="300">
+        Title="Предупреждение" Height="400" Width="600">
     <Grid>
-        <Label x:Name="lb_warn" Content="Пришлось ограничить поле размерами 3х3, &#xA;чтобы вы не делали то, чего не стоит!" HorizontalAlignment="Left" VerticalAlignment="Top" Height="54" Width="272" Margin="10,10,0,0"/>
-        <Image x:Name="image_hehe" HorizontalAlignment="Left" Height="100" Margin="88,64,0,0" VerticalAlignment="Top" Width="100" Source="Properties/Wonder.PNG" Stretch="Fill"/>
+        <Label x:Name="lb_warn" Content="Пришлось ограничить поле размерами 3х3, &#xD;&#xA;чтобы вы не делали то, чего не стоит! &#xA;И уж постарайтесь не баловаться с количеством &#xD;&#xA;преград и целей." HorizontalAlignment="Left" VerticalAlignment="Top" Height="144" Width="572" Margin="10,10,0,0" FontSize="22"/>
+        <Image x:Name="image_hehe" HorizontalAlignment="Left" Height="200" Margin="181,154,0,0" VerticalAlignment="Top" Width="200" Source="Properties/Wonder.PNG" Stretch="Fill"/>
 
     </Grid>
 </Window>
