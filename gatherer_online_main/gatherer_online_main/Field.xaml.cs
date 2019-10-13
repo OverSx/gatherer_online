@@ -19,15 +19,26 @@ namespace gatherer_online_main
     /// </summary>
     public partial class Field : Window
     {
-        public Field()
-        {
-            InitializeComponent();
-        }
+        int[,] myField;
+        int numGoals;
+        int BeginnumGoals;
+        int numObstacles;
+        int step = 0;
+        bool isFirstTime = true;
+        Plotter Check = new Plotter();
+        playing_field for_images = new playing_field();
+        List<int> Agent = new List<int>();
+        List<List<int>> Way_to_MAINGOAL = new List<List<int>>();
+        List<List<int>> Goals = new List<List<int>>();
 
-        private void bt_playAll_Click(object sender, RoutedEventArgs e)
+        public Field(int[,] field, int field_goals, int field_stop)
         {
-            Plotter Plot = new Plotter();
-            Plot.Let_find_way();
+            numGoals = field_goals;
+            BeginnumGoals = field_goals;
+            numObstacles = field_stop;
+            myField = new int[field.GetLength(0), field.GetLength(1)];
+            Check.field_filling(myField, field);
+            InitializeComponent();           
         }
 
         private void bt_steBYstep_Click(object sender, RoutedEventArgs e)
