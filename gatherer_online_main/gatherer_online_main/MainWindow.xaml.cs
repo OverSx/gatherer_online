@@ -34,7 +34,7 @@ namespace gatherer_online_main
                 WarningWindow Warn = new WarningWindow();
                 Warn.ShowDialog();
             }
-            else if (int.Parse(tb_stop.Text) * int.Parse(tb_goals.Text) - 2 > int.Parse(tb_width.Text) * int.Parse(tb_height.Text))
+            else if (int.Parse(tb_stop.Text) + int.Parse(tb_goals.Text) - 2 > int.Parse(tb_width.Text) * int.Parse(tb_height.Text))
             {
                 WarningWindow Warn = new WarningWindow();
                 Warn.ShowDialog();
