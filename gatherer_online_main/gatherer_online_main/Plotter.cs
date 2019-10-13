@@ -85,6 +85,29 @@ namespace gatherer_online_main
             return AgentCoord;
         }
 
+        public List<List<int>> FindGoals(int[,] field)
+        {
+            List<List<int>> Obstacles = new List<List<int>>();
+            List<int> ObstaclesX = new List<int>();
+            List<int> ObstaclesY = new List<int>();
+
+            for (int i = 0; i < field.GetLength(0); i++)
+            {
+                for (int j = 0; j < field.GetLength(1); j++)
+                {
+                    if (field[i, j] == 1)
+                    {
+                        ObstaclesX.Add(i);
+                        ObstaclesY.Add(j);
+                    }
+                }
+            }
+            Obstacles.Add(ObstaclesX);
+            Obstacles.Add(ObstaclesY);
+
+            return Obstacles;
+        }
+
         private List<List<int>> Waves(int [,] field)
         {
             int[,] newField = field;
