@@ -87,9 +87,9 @@ namespace gatherer_online_main
 
         public List<List<int>> FindGoals(int[,] field)
         {
-            List<List<int>> Obstacles = new List<List<int>>();
-            List<int> ObstaclesX = new List<int>();
-            List<int> ObstaclesY = new List<int>();
+            List<List<int>> Goals = new List<List<int>>();
+            List<int> GoalsX = new List<int>();
+            List<int> GoalsY = new List<int>();
 
             for (int i = 0; i < field.GetLength(0); i++)
             {
@@ -97,15 +97,15 @@ namespace gatherer_online_main
                 {
                     if (field[i, j] == 1)
                     {
-                        ObstaclesX.Add(i);
-                        ObstaclesY.Add(j);
+                        GoalsX.Add(i);
+                        GoalsY.Add(j);
                     }
                 }
             }
-            Obstacles.Add(ObstaclesX);
-            Obstacles.Add(ObstaclesY);
+            Goals.Add(GoalsX);
+            Goals.Add(GoalsY);
 
-            return Obstacles;
+            return Goals;
         }
 
         private List<List<int>> Waves(int [,] field)
@@ -299,7 +299,6 @@ namespace gatherer_online_main
                         }
                     }
                 }
-
                 if (WayIsExist == false)
                 {
                     break;
