@@ -23,8 +23,8 @@ namespace gatherer_online_main
 
         private List<int> Coordinates(int field_w, int field_h)
         {
-            int x = rand.Next(field_w);
-            int y = rand.Next(field_h);
+            int x = rand.Next(field_h);
+            int y = rand.Next(field_w);
 
             List<int> coordinates = new List<int> {x, y};
 
@@ -33,15 +33,15 @@ namespace gatherer_online_main
 
         private int[,] Filling(int field_w, int field_h, int field_s, int field_g)
         {
-            filled_field = new int[field_w, field_h];
+            filled_field = new int[field_h, field_w];
             numGoals = field_g;
             numObstacles = field_s;
 
             List<int> agent_coord = Coordinates(field_w, field_h);
 
-            for (int i = 0; i < field_w; i++)
+            for (int i = 0; i < field_h; i++)
             {
-                for (int j = 0; j < field_h; j++)
+                for (int j = 0; j < field_w; j++)
                 {
                     if (i == agent_coord[0] && j == agent_coord[1])
                     {
@@ -91,7 +91,7 @@ namespace gatherer_online_main
 
         public Field_filling(int field_w, int field_h, int field_s, int field_g)
         {
-            field_size = new int[field_w, field_h];
+            field_size = new int[field_h, field_w];
             numGoals = field_g;
             numObstacles = field_s;
 
