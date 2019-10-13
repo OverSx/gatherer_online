@@ -43,7 +43,53 @@ namespace gatherer_online_main
 
         private void bt_steBYstep_Click(object sender, RoutedEventArgs e)
         {
+            if (numGoals != -1)
+            {
+                Grid next_step_grid = new Grid();
+                if (isFirstTime)
+                {
+                    isFirstTime = false;
+                    Way_to_MAINGOAL = Check.Let_find_way(myField, numGoals);
+                    Goals = Check.FindGoals(myField);
+                }
 
+                if (Way_to_MAINGOAL.Count == 0)
+                {
+                    MessageBox.Show("Я не смог((");
+                    this.Close();
+
+                }
+                else
+                {
+                    myField = for_images.Step_field(step, myField, Way_to_MAINGOAL);
+                    Agent = Check.FindMyAgent(myField);
+                    for (int i = 0; i < BeginnumGoals; i++)
+                    {
+                        if (Agent[0] == Goals[0][i] && Agent[1] == Goals[1][i])
+                        {
+                            numGoals--;
+                            Goals[0].RemoveAt(i);
+                            Goals[1].RemoveAt(i);
+                            BeginnumGoals--;
+                        }
+                    }
+                    next_step_grid = for_images.Fill_field_with_images(myField, numGoals, numObstacles);
+                    MainGridField.Children.RemoveAt(0);
+                    MainGridField.Children.Insert(0, next_step_grid);
+                    if (step < Way_to_MAINGOAL[0].Count - 1)
+                    {
+                        step++;
+                    }
+                    else
+                    {
+                        numGoals = -1;
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Я закончил!");
+            }
         }
     }
 }
