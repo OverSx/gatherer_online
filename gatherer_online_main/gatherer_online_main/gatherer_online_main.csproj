@@ -89,20 +89,11 @@
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -112,47 +103,19 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Properties\stop_signal.png" />
-  </ItemGroup>
-  <ItemGroup />
-  <ItemGroup>
-    <None Include="stop_signal.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="final_goal.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="goal.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="height.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="width.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="width1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="rofl.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Properties\final_goal.jpg" />
+  </ItemGroup>
+  <ItemGroup>
     <Resource Include="Properties\goal.jpg" />
     <Resource Include="Properties\height.png" />
+    <Resource Include="Properties\stop_signal.png" />
     <Resource Include="Properties\width.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Properties\Failure.PNG" />
-    <Resource Include="Properties\Joy.PNG" />
-    <Resource Include="Properties\Joy2.PNG" />
+    <Resource Include="Properties\Agent.PNG" />
+    <Resource Include="Properties\Bad_Job.PNG" />
+    <Resource Include="Properties\Good_job.PNG" />
     <Resource Include="Properties\Wonder.PNG" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Failure.PNG" />
-    <Resource Include="Resources\Joy.PNG" />
-    <Resource Include="Resources\Joy2.PNG" />
-    <Resource Include="Resources\Wonder.PNG" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

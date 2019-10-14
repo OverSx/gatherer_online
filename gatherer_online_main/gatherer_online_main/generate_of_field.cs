@@ -93,7 +93,7 @@ namespace gatherer_online_main
 
             BitmapImage forAgent = new BitmapImage();
             forAgent.BeginInit();
-            forAgent.UriSource = new Uri("Properties/Joy.PNG", UriKind.Relative);
+            forAgent.UriSource = new Uri("Properties/Agent.PNG", UriKind.Relative);
             forAgent.EndInit();
             agent.Stretch = Stretch.Fill;
             agent.Source = forAgent;
