@@ -55,6 +55,11 @@ namespace gatherer_online_main
             //Собрал все цели, кроме последней и имею два списка, один содержит x - координаты, другой - y координаты движения агента
             //Теперь надо дойти до последней цели и занести в список координаты передвижения моего агента
             FinalWay = Last_wave(newField);
+            if (FinalWay.Count == 0)
+            {
+                return FinalWay;
+            }
+
             for (int j = 0; j < FinalWay[0].Count; j++)
             {
                 FinalWayX.Add(FinalWay[0][j]);
