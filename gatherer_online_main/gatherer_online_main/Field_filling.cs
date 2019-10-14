@@ -21,6 +21,7 @@ namespace gatherer_online_main
 
         Random rand = new Random();
 
+        //Функция для рандома координат
         private List<int> Coordinates(int field_w, int field_h)
         {
             int x = rand.Next(field_h);
@@ -31,12 +32,14 @@ namespace gatherer_online_main
             return coordinates;
         }
 
+        //Заполнение поля предметами
         private int[,] Filling(int field_w, int field_h, int field_s, int field_g)
         {
             filled_field = new int[field_h, field_w];
             numGoals = field_g;
             numObstacles = field_s;
 
+            //Агент и проходы
             List<int> agent_coord = Coordinates(field_w, field_h);
 
             for (int i = 0; i < field_h; i++)
@@ -53,6 +56,7 @@ namespace gatherer_online_main
                 }
             }
 
+            // Конечная цель
             List<int> final_goal_coord = Coordinates(field_w, field_h);
 
             while (filled_field[final_goal_coord[0], final_goal_coord[1]] != 0)
@@ -62,6 +66,7 @@ namespace gatherer_online_main
 
             filled_field[final_goal_coord[0], final_goal_coord[1]] = 2;
 
+            //Преграды
             List<int> Obstacles_coord = Coordinates(field_w, field_h);
 
             for (int num = 0; num < numObstacles; num++)
@@ -74,6 +79,7 @@ namespace gatherer_online_main
                 filled_field[Obstacles_coord[0], Obstacles_coord[1]] = 3;
             }
 
+            //Цели
             List<int> Goals_coord = Coordinates(field_w, field_h);
 
             for (int num = 0; num < numGoals; num++)
@@ -89,6 +95,7 @@ namespace gatherer_online_main
             return filled_field;
         }
 
+        //Инициализация класса
         public Field_filling(int field_w, int field_h, int field_s, int field_g)
         {
             field_size = new int[field_h, field_w];
@@ -97,6 +104,7 @@ namespace gatherer_online_main
 
         }
 
+        //Вызов функции из окна
         public int[,] MyField(int field_w, int field_h, int field_s, int field_g)
         {
             filled_field = Filling(field_w, field_h, field_s, field_g);

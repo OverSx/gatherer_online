@@ -16,20 +16,14 @@ namespace gatherer_online_main
         private int[,] field;
         Field_filling field_with_elem;
 
-        //public playing_field(int field_w, int field_h, int field_s, int field_g)
-        //{
-        //    field_width = field_w;
-        //    field_height = field_h;
-        //    field_stop = field_s;
-        //    field_goals = field_g;
-        //}
-
         public Grid grid { private set; get; }
 
+        //Отрисовка поля
         public Grid Fill_field_with_images(int [,] field, int field_g, int field_s)
         {
             Grid myGrid = new Grid();
 
+            //Сетка
             for (int i = 0; i < field.GetLength(0); i++)
             {
                 myGrid.RowDefinitions.Add(new RowDefinition());
@@ -46,20 +40,23 @@ namespace gatherer_online_main
             myGrid.HorizontalAlignment = HorizontalAlignment.Left;
 
 
-            myGrid.Children.Add(Final_goal(field));
+            myGrid.Children.Add(Final_goal(field)); //Отрисовываю конечную цель
 
+            //Отрисовка преград
             List<Image> myObstacles = Obstacles(field, field_s);
             for (int i = 0; i < field_s; i++)
             {
                 myGrid.Children.Add(myObstacles[i]);
             }
 
+            //Отрисовка целей 
             List<Image> myGoals = Goals(field, field_g);
             for (int i = 0; i < field_g; i++)
             {
                 myGrid.Children.Add(myGoals[i]);
             }
 
+            //Отрисовка агентаы
             myGrid.Children.Add(Agent(field));
 
             this.grid = myGrid;
@@ -67,6 +64,7 @@ namespace gatherer_online_main
             return myGrid;
         }
 
+        //Реализация отрисовки агента
         private Image Agent(int[,] filled_field)
         {
             Image agent = new Image();
@@ -106,6 +104,7 @@ namespace gatherer_online_main
             return agent;
         }
 
+        //Реализация отрисовки конечной цели
         private Image Final_goal(int[,] filled_field)
         {
             Image final_goal = new Image();
@@ -151,6 +150,7 @@ namespace gatherer_online_main
             return final_goal;
         }
 
+        //Реализация отрисовки преград
         private List<Image> Obstacles(int[,] filled_field, int field_s)
         {
             List<Image> obstacles = new List<Image>();
@@ -191,6 +191,7 @@ namespace gatherer_online_main
             return obstacles;
         }
 
+        //Реализация отрисовки целей
         private List<Image> Goals(int[,] filled_field, int field_g)
         {
             List<Image> goals = new List<Image>();
@@ -235,27 +236,25 @@ namespace gatherer_online_main
             return goals;
         }
 
+        //Функция для вызова ее по нажатию на кнопку "Сгенерировать". Она поле класса Field
         public Field Generate_field(int field_w, int field_h, int field_s, int field_g)
         {
             Grid newGrid = new Grid();
 
-            field_with_elem = new Field_filling(field_w, field_h, field_s, field_g);
-            field = field_with_elem.MyField(field_w, field_h, field_s, field_g);
+            field_with_elem = new Field_filling(field_w, field_h, field_s, field_g); //Инициализация переменной для заполнения поля
+            field = field_with_elem.MyField(field_w, field_h, field_s, field_g); //Заполняем поле
 
             Field field_for_generate = new Field(field, field_g, field_s);
 
-            newGrid = Fill_field_with_images(field, field_g, field_s);
+            newGrid = Fill_field_with_images(field, field_g, field_s); //Отрисовываем
+            //Кладем в МэйнГрид наш грид с полем
             field_for_generate.MainGridField.Children.RemoveAt(0);
             field_for_generate.MainGridField.Children.Insert(0, newGrid);
 
             return field_for_generate;
         }
 
-        public int[,] GetField()
-        {
-            return field;
-        }
-
+        //Функция которая двигает моего агента по карте
         public int[,] Step_field(int step, int [,] this_is_current_field, List<List<int>> list_with_way)
         {
             bool AgentCoordIsFind = false;

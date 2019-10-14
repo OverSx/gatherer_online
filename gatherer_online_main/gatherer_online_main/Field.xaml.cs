@@ -31,6 +31,7 @@ namespace gatherer_online_main
         List<List<int>> Way_to_MAINGOAL = new List<List<int>>();
         List<List<int>> Goals = new List<List<int>>();
 
+        //Передаем с инициализацией класса в него все необходимые данные
         public Field(int[,] field, int field_goals, int field_stop)
         {
             numGoals = field_goals;
