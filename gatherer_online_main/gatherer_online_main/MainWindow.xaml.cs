@@ -29,21 +29,28 @@ namespace gatherer_online_main
 
         private void bt_generate_Click(object sender, RoutedEventArgs e)
         {
-            if (int.Parse(tb_width.Text) < 3 || int.Parse(tb_height.Text) < 3)
+            if (tb_width.Text == "" || tb_height.Text == "" || tb_stop.Text == "" || tb_goals.Text == "")
             {
-                WarningWindow Warn = new WarningWindow();
-                Warn.ShowDialog();
-            }
-            else if (int.Parse(tb_stop.Text) + int.Parse(tb_goals.Text) - 2 > int.Parse(tb_width.Text) * int.Parse(tb_height.Text))
-            {
-                WarningWindow Warn = new WarningWindow();
-                Warn.ShowDialog();
+                MessageBox.Show("Не ну а заполнять поля кто будет?");
             }
             else
             {
-                playing_field field = new playing_field();
-                Field new_field = field.Generate_field(int.Parse(tb_width.Text), int.Parse(tb_height.Text), int.Parse(tb_stop.Text), int.Parse(tb_goals.Text));
-                new_field.ShowDialog();
+                if (int.Parse(tb_width.Text) < 3 || int.Parse(tb_height.Text) < 3)
+                {
+                    WarningWindow Warn = new WarningWindow();
+                    Warn.ShowDialog();
+                }
+                else if (int.Parse(tb_stop.Text) + int.Parse(tb_goals.Text) + 2 > int.Parse(tb_width.Text) * int.Parse(tb_height.Text))
+                {
+                    WarningWindow Warn = new WarningWindow();
+                    Warn.ShowDialog();
+                }
+                else
+                {
+                    playing_field field = new playing_field();
+                    Field new_field = field.Generate_field(int.Parse(tb_width.Text), int.Parse(tb_height.Text), int.Parse(tb_stop.Text), int.Parse(tb_goals.Text));
+                    new_field.ShowDialog();
+                }
             }
         }
 
